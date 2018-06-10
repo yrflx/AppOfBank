@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">App Of Bank</string>
+    <string name="textoSelecionarTipoDeUsuario">Selecione seu tipo de usuario</string>
+    <string name="textoBotaoBanco">Gerente do Banco</string>
+    <string name="textoBotaoCliente">Cliente do Banco</string>
+    <string name="Login"> Login </string>
+    <string name="digita_Email">Digite seu e-mail</string>
+    <string name="DigitaSenha">Digite sua senha</string>
+    <string name="cadastrese">Não tem conta? Cadastre-se aqui</string>
+    <string name="esqueciSenha">Esqueci a Senha</string>
+    <string name="Nome">nome</string>
+    <string name="Sobrenome">sobrenome</string>
+    <string name="digita_endereco">Digite Seu endereço</string>
+    <string name="agencia">Agencia</string>
+    <string name="telefone">telefone</string>
+    <string name="dataNasciomento">Data de Nascimento</string>
+    <string name="email">E-mail</string>
+    <string name="senha">Senha</string>
+    <string name="senhaConfirma">Confirme a senha</string>
+    <string name="Cadastrar">Cadastrar</string>
+    <string name="textoSelecionarBanco">Selecione seu banco</string>
+    <string name="ok">OK</string>
+    <string name="title_activity_selecao_usuario">SelecaoUsuarioActivity</string>
+    <string name="textoSaldoEmConta">Saldo em conta</string>
+    <string name="reais_simbolo">R$</string>
+    <string name="textoLimiteTotal">Limite Total</string>
+    <string name="textoHistoricoTransferencias">Historico de Tranferencias</string>
+    <string name="textoUltimaTransferencia">Ultima transferencia:</string>
+    <string name="textoUltimoPag">Ultimo pagamento:</string>
+    <string name="textoHistoricoPagamentos">Historico de Pagamentos</string>
+
+    <string name="IP">192.168.0.15</string>
+
+
+</resources>

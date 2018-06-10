@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.yurifelix.appofbank">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppThemeNoActionBar">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Login.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Login.CadastroActivity"
+            android:label="Cadastro"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Login.SelecaoBancoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Historicos.HistoricoTransferenciasActivity"
+            android:label="Historico de Transferencias"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".RealizarPagamentoActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".RealizarTranferenciaActivity" />
+        <activity android:name=".PagarFaturaActivity" />
+        <activity
+            android:name=".Login.SelecaoContaActivity"
+            android:label="Selecione uma conta"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Login.CriarContaActivity"
+            android:label="Criar conta"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Historicos.HistoricoSaquesActivity"
+            android:label="Historico de Saques"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".ServerOffActivity" />
+        <activity android:name=".RandomCodeActivity" />
+
+        <service
+            android:name=".ServiceAtualiza"
+            android:exported="false" />
+
+        <activity android:name=".DadosContaActivity"
+                android:theme="@style/AppTheme"
+                android:label="Dados da Conta"
+                android:screenOrientation="portrait"
+            ></activity>
+    </application>
+
+</manifest>
