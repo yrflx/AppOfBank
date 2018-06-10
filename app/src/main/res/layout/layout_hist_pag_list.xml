@@ -53,7 +53,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_receptor" />
 
     <TextView
-        android:id="@+id/tv_valor"
+        android:id="@+id/valor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"

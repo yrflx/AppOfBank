@@ -94,8 +94,6 @@ public class SelecaoContaActivity extends AppCompatActivity {
     }
 
 
-
-
     class ReceberContas extends AsyncTask<Void, Void,Void> {
 
         private String resultado;
@@ -113,8 +111,6 @@ public class SelecaoContaActivity extends AppCompatActivity {
                 conexao.enviaString(cliente);
 
                 resultado = conexao.recebeString();
-
-                System.out.println("r"+resultado);
 
                 conexao.fechaConexao();
 

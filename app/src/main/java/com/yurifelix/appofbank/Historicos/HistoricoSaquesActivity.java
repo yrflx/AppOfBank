@@ -89,7 +89,7 @@ public class HistoricoSaquesActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            SharedPreferences sharedPreferences = getSharedPreferences("DADOS", MODE_PRIVATE);
+           sharedPreferences = getSharedPreferences("DADOS", MODE_PRIVATE);
             String conta = sharedPreferences.getString("CONTA", "");
 
 
@@ -102,22 +102,21 @@ public class HistoricoSaquesActivity extends AppCompatActivity {
                 conexao.enviaString(conta);
                 resultado = "";
                 resultado = conexao.recebeString();
-                System.out.println("---->"+resultado);
+
                 conexao.fechaConexao();
                 Handler handler = new Handler(getApplicationContext().getMainLooper());
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
                         if(!resultado.equals("")){
-                            System.out.println("NAO DEU MERDA");
+
                             String[] result = resultado.split("&&");
-                            System.out.println("NAO DEU MERDA  resultsize:" + result.length);
+
                             saques.clear();
 
                             for(String r : result){
                                 String[] valorData = r.split("##");
-                                System.out.println("---->VALOR:"+valorData[0]);
-                                System.out.println("---->data:"+valorData[1]);
+
 
                                 String[] d = valorData[1].split("/");
                                 int ano = Integer.parseInt(d[0]);
@@ -136,7 +135,8 @@ public class HistoricoSaquesActivity extends AppCompatActivity {
                             }
                             adapter.notifyDataSetChanged();
                         }else {
-                            startActivity(new Intent(getApplicationContext(), ServerOffActivity.class));
+
+                          //  startActivity(new Intent(getApplicationContext(), ServerOffActivity.class));tartActivity(new Intent(getApplicationContext(), ServerOffActivity.class));
                         }
 
                     }
@@ -145,7 +145,6 @@ public class HistoricoSaquesActivity extends AppCompatActivity {
 
 
             }catch (Exception e){
-
 
 
 

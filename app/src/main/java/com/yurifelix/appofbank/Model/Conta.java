@@ -18,6 +18,7 @@ public class Conta {
     private Fatura[] faturas;
     private Saque[] saques;
 
+    public Conta(){}
 
     public Conta(String numero, Agencia agencia, Banco banco, Double limite) {
         this.numero = numero;

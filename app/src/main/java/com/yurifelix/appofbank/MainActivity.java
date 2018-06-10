@@ -47,8 +47,7 @@ import com.yurifelix.appofbank.Login.SelecaoContaActivity;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
+        activityAtiva = true;
         Context context = getApplicationContext();
         context.startService(new Intent(this, ServiceAtualiza.class));
 
@@ -94,6 +93,9 @@ import com.yurifelix.appofbank.Login.SelecaoContaActivity;
 
             ReceberDadosMain receberDadosMain = new ReceberDadosMain();
             receberDadosMain.execute();
+
+
+
 
         }
 

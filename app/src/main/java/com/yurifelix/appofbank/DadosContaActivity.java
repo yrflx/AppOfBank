@@ -43,6 +43,8 @@ public class DadosContaActivity extends AppCompatActivity {
 
     public synchronized void sair(View v){
 
+        sharedPreferences = getSharedPreferences("DADOS", MODE_PRIVATE);
+
         sharedPreferences.edit().putBoolean("LOGADO", false).apply();
         startActivity(new Intent(this, LoginActivity.class));
 

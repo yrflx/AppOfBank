@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.yurifelix.appofbank.Model.Saque;
-import com.yurifelix.appofbank.Model.Tranferencia;
 import com.yurifelix.appofbank.R;
 
 import java.util.ArrayList;
@@ -47,7 +46,7 @@ public class HistoricoSaqueAdapter extends ArrayAdapter<Saque> {
 
             Saque saque = saques.get(i);
 
-            TextView valor = view.findViewById(R.id.tv_valor);
+            TextView valor = view.findViewById(R.id.valor);
 
             TextView data = view.findViewById(R.id.tv_data);
 

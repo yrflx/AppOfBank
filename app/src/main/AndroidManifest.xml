@@ -36,9 +36,6 @@
             android:label="Historico de Transferencias"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-        <activity
-            android:name=".RealizarPagamentoActivity"
-            android:screenOrientation="portrait" />
         <activity android:name=".RealizarTranferenciaActivity" />
         <activity android:name=".PagarFaturaActivity" />
         <activity

@@ -48,27 +48,24 @@ public class HistoricoTransferenciaAdapter extends ArrayAdapter<Tranferencia> {
 
             TextView destinatario = view.findViewById(R.id.tv_destinatario);
 
-            TextView valor = view.findViewById(R.id.tv_valor);
+            TextView valor = view.findViewById(R.id.valor);
 
             TextView data = view.findViewById(R.id.tv_data);
             TextView hora = view.findViewById(R.id.tv_hora);
 
-            destinatario.setText(tranf.getEmissor().toString());
+            destinatario.setText(tranf.getReceptor().getNumero().toString());
 
-            valor.setText(String.format(String.valueOf(valor.getText()), "%.2f"));
+            valor.setText(String.format(String.valueOf(tranf.getValor()), "%.2f"));
 
             Calendar calendar = tranf.getDataTransferecia();
 
             int ano = calendar.get(Calendar.YEAR);
-            int mes = calendar.get(Calendar.MONTH);
+            int mes = calendar.get(Calendar.MONTH) + 1;
             int dia = calendar.get(Calendar.DAY_OF_MONTH);
-
-            int hr = calendar.get(Calendar.HOUR_OF_DAY);
-            int min = calendar.get(Calendar.MINUTE);
 
 
             data.setText(dia+"/"+mes+"/"+ano);
-            data.setText(hr+"h"+min);
+
 
 
 

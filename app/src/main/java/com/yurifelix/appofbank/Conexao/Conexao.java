@@ -24,7 +24,7 @@ public class Conexao {
 
     private Socket socket;
 
-    private static String IP = "10.55.0.118";
+    private static String IP = "192.168.0.20";
 
     private InputStream inputStream;
     private OutputStream outputStream;
@@ -44,6 +44,7 @@ public class Conexao {
         try {
 
             socket.connect(new InetSocketAddress(IP,porta));
+            socket.setSoTimeout(10 * 1000);
 
             inputStream = socket.getInputStream();
             outputStream = socket.getOutputStream();

@@ -95,12 +95,12 @@ public class RealizarTranferenciaActivity extends AppCompatActivity {
                     public void run() {
                         if(!resultado.equals("")){
 
-                                    if(resultado.equals("true")){
-                                        Toast.makeText(getApplicationContext(), "Transferencia realizada com sucesso.", Toast.LENGTH_SHORT);
+                            if(resultado.equals("true")){
+                                Toast.makeText(getApplicationContext(), "Transferencia realizada com sucesso.", Toast.LENGTH_SHORT).show();
 
 
                             }else{
-                                Toast.makeText(getApplicationContext(), "Erro", Toast.LENGTH_SHORT);
+                                Toast.makeText(getApplicationContext(), "Erro", Toast.LENGTH_SHORT).show();
                             }
 
 

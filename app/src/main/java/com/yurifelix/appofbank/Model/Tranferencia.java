@@ -18,13 +18,16 @@ public class Tranferencia {
 
     private Calendar dataTransferecia;
 
+    public Tranferencia(){
+
+    }
 
     public Tranferencia( Banco banco, Conta emissor, Conta receptor, double valor) {
         this.banco = banco;
         this.emissor = emissor;
         this.receptor = receptor;
         this.valor = valor;
-        this.dataTransferecia = Calendar.getInstance();
+
     }
 
 
@@ -58,6 +61,10 @@ public class Tranferencia {
 
     public void setValor(double valor) {
         this.valor = valor;
+    }
+
+    public void setDataTransferecia(Calendar dataTransferecia) {
+        this.dataTransferecia = dataTransferecia;
     }
 
     public Calendar getDataTransferecia() {

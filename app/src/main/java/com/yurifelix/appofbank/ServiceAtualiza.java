@@ -81,10 +81,6 @@ public class ServiceAtualiza extends Service implements Runnable{
     public void AtualizaDados() throws InterruptedException {
 
         try{
-
-
-
-                    Thread.sleep(2000);
                     System.out.println("NOVA ATUALIZACAO");
                     conexao.enviaString("service");
                     conexao.enviaString(contaAtual);
@@ -95,17 +91,9 @@ public class ServiceAtualiza extends Service implements Runnable{
 
                         saldo = Double.parseDouble(resultado);
 
-                        System.out.println("pre IfElse");
+
                         if(MainActivity.isActivityAtiva()){
-                            System.out.println("if");
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                        }else if(true){
-
-
-
-
-
-
                         }
 
                     }
@@ -115,7 +103,7 @@ public class ServiceAtualiza extends Service implements Runnable{
             Log.e("ATUALIZADADOS", "erro:" + e);
         }finally {
             if(conexao.isConected()){
-               // conexao.fechaConexao();
+                //conexao.fechaConexao();
             }
         }
 
@@ -136,13 +124,9 @@ public class ServiceAtualiza extends Service implements Runnable{
             conexao.conectaServidor();
 
             while (true){
-                if(sharedPreferences.getBoolean("LOGADO",false)){
 
-                    Log.i("BREAK NO SERVICE", "BREAK NO SERVICE REALIZADO");
-                    break;
-                }
 
-                Thread.sleep(10 * 1000);
+                Thread.sleep( 1000);
                 AtualizaDados();
                 Log.i("SERVICE", "rodando");
             }
