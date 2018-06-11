@@ -41,16 +41,11 @@ import com.yurifelix.appofbank.Login.SelecaoContaActivity;
     private String clienteAtual = "";
     private String contaAtual = "";
 
-    private static boolean activityAtiva = false;
-
+    private Intent intent;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        activityAtiva = true;
-        Context context = getApplicationContext();
-        context.startService(new Intent(this, ServiceAtualiza.class));
-
 
         //recebe objetos layout
 
@@ -75,7 +70,7 @@ import com.yurifelix.appofbank.Login.SelecaoContaActivity;
     }
     @Override
     protected void onStart() {
-        activityAtiva = true;
+
         super.onStart();
 
         int verifica = verificaLogin();
@@ -141,13 +136,13 @@ import com.yurifelix.appofbank.Login.SelecaoContaActivity;
         startActivity(new Intent(this, RealizarTranferenciaActivity.class));
     }
 
-        public void realizarSaque(View v){
-            startActivity(new Intent(this, RandomCodeActivity.class));
-        }
+    public void realizarSaque(View v){
+        startActivity(new Intent(this, RandomCodeActivity.class));
+    }
 
-        public void dadosConta(View v){
-            startActivity(new Intent(this, DadosContaActivity.class));
-        }
+    public void dadosConta(View v){
+        startActivity(new Intent(this, DadosContaActivity.class));
+    }
 
 
 
@@ -304,29 +299,28 @@ import com.yurifelix.appofbank.Login.SelecaoContaActivity;
                 progressDados.setIndeterminate(false);
                 progressConta.setIndeterminate(false);
 
+
+                intent = new Intent(getApplicationContext(), ServiceAtualiza.class);
+
+                intent.putExtra("SALDO", saldo.getText().toString());
+
+                Context context = getApplicationContext();
+                context.startService(intent);
             }
 
         }
 
 
-
-        //sinalizacao de tela ativa ou nao para o service
-
-        public static boolean isActivityAtiva() {
-            return activityAtiva;
-        }
-
         @Override
         protected void onStop() {
-            activityAtiva = false;
+
             super.onStop();
+            try{
+                stopService(intent);
+            }catch (Exception e) {}
+
         }
 
-        @Override
-        protected void onDestroy() {
-            activityAtiva = false;
-            super.onDestroy();
-        }
 
 
     }

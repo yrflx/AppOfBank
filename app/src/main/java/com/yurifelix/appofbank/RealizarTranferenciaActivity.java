@@ -111,8 +111,6 @@ public class RealizarTranferenciaActivity extends AppCompatActivity {
                     }
                 });
 
-
-
                 return null;
             }
 

@@ -14,8 +14,10 @@ import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.yurifelix.appofbank.Conexao.Conexao;
@@ -32,7 +34,7 @@ public class ServiceAtualiza extends Service implements Runnable{
     private Conta conta;
 
     private Conexao conexao;
-    private double saldo = 0;
+    private double saldo;
 
     private String clienteAtual = "";
     private String contaAtual = "";
@@ -50,8 +52,13 @@ public class ServiceAtualiza extends Service implements Runnable{
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.e("ONS", "onStartCommand");
+
         this.intent = intent;
+
+        String saldoRecebe = intent.getStringExtra("SALDO");
+        saldo = Double.parseDouble(saldoRecebe);
+
+        System.out.println("saldo" + saldo);
         sharedPreferences = getSharedPreferences("DADOS", Context.MODE_PRIVATE);
 
 
@@ -61,7 +68,6 @@ public class ServiceAtualiza extends Service implements Runnable{
 
             if(!(clienteAtual.equals("")) || !(contaAtual.equals(""))){
 
-                System.out.println("==== ABRINDO THREAD====");
                 Thread thread = new Thread(this);
                 thread.start();
 
@@ -69,46 +75,33 @@ public class ServiceAtualiza extends Service implements Runnable{
             }
         }
 
-
-
         return START_STICKY;
 
 
     }
 
-
-
     public void AtualizaDados() throws InterruptedException {
 
         try{
-                    System.out.println("NOVA ATUALIZACAO");
-                    conexao.enviaString("service");
-                    conexao.enviaString(contaAtual);
+            System.out.println("NOVA ATUALIZACAO");
+            conexao.enviaString("service");
+            conexao.enviaString(contaAtual);
 
-                    String resultado = conexao.recebeString();
+            String resultado = conexao.recebeString();
 
-                    if(Double.parseDouble(resultado)!=saldo){
+            if(Double.parseDouble(resultado)!=saldo){
+                System.out.println("DIFERENTEEEEEEEEEEEEEEEE");
+                saldo = Double.parseDouble(resultado);
 
-                        saldo = Double.parseDouble(resultado);
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
 
-                        if(MainActivity.isActivityAtiva()){
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                        }
-
-                    }
+            }
 
 
         }catch (Exception e){
             Log.e("ATUALIZADADOS", "erro:" + e);
-        }finally {
-            if(conexao.isConected()){
-                //conexao.fechaConexao();
-            }
         }
-
-
-
 
     }
 
@@ -119,20 +112,21 @@ public class ServiceAtualiza extends Service implements Runnable{
 
             sharedPreferences = getSharedPreferences("DADOS", Context.MODE_PRIVATE);
 
-
             conexao = new Conexao(2626);
             conexao.conectaServidor();
 
             while (true){
 
-
-                Thread.sleep( 1000);
+                Thread.sleep( 5 * 1000);
                 AtualizaDados();
-                Log.i("SERVICE", "rodando");
+
             }
 
         } catch (Exception e) {
             e.printStackTrace();
+        }finally {
+            if(conexao.isConected())
+                conexao.fechaConexao();
         }
     }
 }
